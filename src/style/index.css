@@ -1,0 +1,31 @@
+*{
+	margin: 0;
+	padding: 0;
+	background: black;
+	color: lightgray;
+}
+
+.app-title {
+	position: relative;
+	text-align: center;
+}
+
+.header-nav-links {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+	background: lightgray;
+	color: darkkhaki;
+	margin: 1.3rem;
+	border-radius: 10rem;
+
+}
+
+.nav-links {
+	color: red;
+	text-decoration: none;
+}
+
+.is-active {
+	font-weight: bold;
+}

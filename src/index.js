@@ -1,17 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import AppRouter from './routers/AppRouter';
+import { Provider } from 'react-redux';
+import { addExpense } from './actions/expenses';
+import { setTextFilter } from './actions/filters';
+import configureStore from './store/configureStore';
+import getVisibleExpenses from './selectors/expenses'
+import 'normalize.css/normalize.css';
+import './style/index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const store = configureStore();
+const state = store.getState();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+store.dispatch(addExpense({description:'Water bill', amount:'300', createdAt:0}))
+store.dispatch(addExpense({description:'rent bill', amount:'4300', createdAt:0}))
+
+
+const jnx = (
+	<Provider store = {store}>
+		<AppRouter />
+	</Provider>
+)
+
+ReactDOM.render(jnx, document.getElementById('root'));
